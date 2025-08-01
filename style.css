@@ -1,46 +1,60 @@
+:root {
+    /* Variabel CSS untuk warna dan ukuran agar mudah diubah */
+    --primary-pink: #fce4ec; /* Background */
+    --dark-pink: #c2185b; /* Teks romantis */
+    --accent-pink: #e91e63; /* Tombol */
+    --text-color: #4a4a4a; /* Teks umum */
+    --purple-text: #6a1b9a; /* Puisi */
+    --green-text: #388e3c; /* Terima kasih */
+    --button-hover: #c2185b; /* Tombol hover */
+}
+
 body {
     margin: 0;
     font-family: 'Playfair Display', serif;
-    overflow: hidden;
-    background-color: #fce4ec;
+    overflow: hidden; /* Mencegah scroll saat transisi */
+    background-color: var(--primary-pink);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #4a4a4a;
+    color: var(--text-color);
+    padding: 20px; /* Padding global untuk body agar tidak terlalu mepet tepi */
+    box-sizing: border-box; /* Pastikan padding dihitung dalam total lebar/tinggi */
 }
 
 .container {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.95); /* Sedikit lebih solid */
+    padding: 2rem; /* Menggunakan rem untuk padding */
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
-    max-width: 90%;
-    width: 700px;
+    max-width: 700px; /* Lebar maksimum container */
+    width: 95%; /* Menggunakan persentase agar responsif */
     position: relative;
-    overflow: hidden; /* Penting untuk animasi section */
+    overflow: hidden;
     height: auto;
     min-height: 450px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between; /* Mendistribusikan ruang secara merata */
     align-items: center;
-    transform: scale(0.95);
+    transform: scale(1); /* Reset scale */
     transition: transform 0.3s ease-in-out;
+    box-sizing: border-box; /* Pastikan padding dihitung dalam total lebar/tinggi */
 }
 
 .section {
     position: absolute;
     width: 100%;
-    height: 100%; /* Penting: agar section mengambil tinggi penuh container */
+    min-height: 100%; /* Pastikan section memiliki tinggi minimum */
     top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
     justify-content: center; /* Akan memusatkan konten secara vertikal */
     align-items: center;
-    padding: 40px;
+    padding: 2.5rem 2rem; /* Padding lebih adaptif */
     box-sizing: border-box;
     opacity: 0;
     visibility: hidden;
@@ -57,50 +71,70 @@ body {
 
 .romantic-text {
     font-family: 'Dancing Script', cursive;
-    color: #c2185b;
+    color: var(--dark-pink);
     text-shadow: 1px 1px 3px rgba(0,0,0,0.08);
-    margin-bottom: 25px;
+    margin-bottom: 1.5rem; /* Menggunakan rem */
 }
 
-h1.romantic-text {
-    font-size: 4em;
-    margin-bottom: 50px;
-    color: #d81b60;
+.main-title { /* Kelas baru untuk judul utama "Happy Girlfriend Day" */
+    font-size: 4em; /* Ukuran default desktop */
+    margin-bottom: 3rem;
+    color: var(--accent-pink);
 }
 
-h2.romantic-text {
-    font-size: 3em;
-    margin-bottom: 30px;
+.section-title { /* Kelas baru untuk judul di setiap section */
+    font-size: 3em; /* Ukuran default desktop */
+    margin-bottom: 2rem;
 }
 
-p.poem-text {
+.poem-text {
     font-family: 'Playfair Display', serif;
-    font-size: 1.4em;
+    font-size: 1.25rem; /* Menggunakan rem */
     line-height: 1.7;
-    margin-bottom: 25px;
+    margin-bottom: 1.5rem;
     font-style: italic;
-    color: #6a1b9a;
-    /* Tambahan: Tambahkan max-height dan overflow jika puisi sangat panjang */
-    max-height: 250px; /* Sesuaikan jika perlu */
-    overflow-y: auto; /* Memungkinkan scroll jika konten terlalu panjang */
-    padding-right: 10px; /* Padding untuk scrollbar jika muncul */
+    color: var(--purple-text);
+    text-align: center; /* Pastikan teks puisi terpusat */
+    max-width: 100%; /* Agar teks tidak melebihi lebar container */
 }
 
-p.thank-you-text {
+/* Scrollable text untuk puisi panjang di section 2 */
+.scrollable-text {
+    max-height: 30vh; /* Maks tinggi 30% dari viewport height */
+    overflow-y: auto; /* Memungkinkan scroll jika konten terlalu panjang */
+    padding-right: 15px; /* Memberi ruang untuk scrollbar */
+    margin-bottom: 2rem;
+}
+
+/* Scrollbar styling (untuk Chrome/Safari/Edge) */
+.scrollable-text::-webkit-scrollbar {
+    width: 8px;
+}
+.scrollable-text::-webkit-scrollbar-thumb {
+    background-color: var(--accent-pink);
+    border-radius: 4px;
+}
+.scrollable-text::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+
+
+.thank-you-text {
     font-family: 'Playfair Display', serif;
-    font-size: 1.3em;
+    font-size: 1.2rem;
     line-height: 1.6;
-    margin-top: 25px; /* Kurangi margin top agar lebih dekat ke puisi */
+    margin-top: 1.5rem;
     font-weight: bold;
-    color: #388e3c;
+    color: var(--green-text);
 }
 
 .next-button {
-    background-color: #e91e63;
+    background-color: var(--accent-pink);
     color: white;
     border: none;
-    padding: 16px 32px;
-    font-size: 1.3em;
+    padding: 1rem 2rem; /* Menggunakan rem */
+    font-size: 1.2rem; /* Menggunakan rem */
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
@@ -108,45 +142,36 @@ p.thank-you-text {
     font-family: 'Dancing Script', cursive;
     font-weight: 700;
     letter-spacing: 0.5px;
-    margin-top: 40px; /* Margin atas untuk memisahkan dari konten */
-    z-index: 10; /* Pastikan tombol di atas elemen lain jika ada tumpang tindih */
+    margin-top: 2rem; /* Margin atas untuk memisahkan dari konten */
+    flex-shrink: 0; /* Mencegah tombol menyusut pada flex container */
 }
 
 .next-button:hover {
-    background-color: #c2185b;
+    background-color: var(--button-hover);
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Penyesuaian untuk tombol yang ada di bagian bawah */
-.next-button.next-bottom {
-    /* Jika Anda ingin tombol ini selalu di bawah, terlepas dari konten */
-    /* position: absolute; */
-    /* bottom: 20px; */
-    /* left: 50%; */
-    /* transform: translateX(-50%); */
-    margin-top: auto; /* Ini akan mendorong tombol ke paling bawah di flex container */
-    margin-bottom: 0; /* Pastikan tidak ada margin bawah berlebih */
-    padding-bottom: 10px; /* Sedikit padding di bawah tombol */
-}
-
-
 .image-gallery {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 40px;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk desktop */
+    gap: 1.25rem; /* Menggunakan rem */
+    margin-top: 2.5rem;
     width: 100%;
-    max-width: 550px;
+    max-width: 400px; /* Ukuran maksimum galeri dikecilkan sedikit */
+    /* Tambahan untuk responsivitas agar tetap persegi */
+    align-items: center;
+    justify-content: center;
 }
 
 .image-placeholder {
     width: 100%;
-    padding-bottom: 100%;
+    padding-bottom: 100%; /* Membuat kotak menjadi persegi */
     background-color: #f5f5f5;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    background-size: cover;
+    background-size: contain; /* Gambar akan muat sepenuhnya */
+    background-repeat: no-repeat; /* Agar gambar tidak mengulang */
     background-position: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 3px solid #f8bbd0;
@@ -167,3 +192,84 @@ p.thank-you-text {
     opacity: 1;
     transform: translateX(0);
 }
+
+/* ======================================= */
+/* MEDIA QUERIES UNTUK RESPONSIVITAS MOBILE */
+/* ======================================= */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+        min-height: 90vh; /* Lebih tinggi di mobile agar konten muat */
+        width: 98%; /* Lebih lebar di mobile */
+    }
+
+    .section {
+        padding: 1.5rem 1rem; /* Padding lebih kecil */
+        min-height: 100%;
+        justify-content: flex-start; /* Konten dimulai dari atas */
+    }
+
+    .main-title {
+        font-size: 2.8em; /* Ukuran font lebih kecil untuk mobile */
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        font-size: 2em; /* Ukuran font lebih kecil untuk mobile */
+        margin-bottom: 1.5rem;
+    }
+
+    .poem-text, .thank-you-text {
+        font-size: 1rem; /* Ukuran font teks lebih kecil */
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+
+    .scrollable-text {
+        max-height: 40vh; /* Beri lebih banyak ruang untuk scrollable text di mobile */
+        margin-bottom: 1.5rem;
+    }
+
+    .next-button {
+        padding: 0.8rem 1.5rem; /* Ukuran tombol lebih kecil */
+        font-size: 1rem;
+        margin-top: 1.5rem; /* Kurangi margin atas */
+    }
+
+    .image-gallery {
+        grid-template-columns: repeat(2, 1fr); /* <-- PERUBAHAN UTAMA DI SINI! TETAP 2 KOLOM */
+        gap: 1rem;
+        margin-top: 1.5rem;
+        max-width: 250px; /* Batasi lebar galeri di mobile lebih kecil */
+    }
+
+    .image-placeholder {
+        border-radius: 8px; /* Border radius lebih kecil */
+    }
+}
+
+@media (max-width: 450px) {
+    .main-title {
+        font-size: 2.2em;
+    }
+    .section-title {
+        font-size: 1.8em;
+    }
+    .poem-text, .thank-you-text {
+        font-size: 0.9rem;
+    }
+    .next-button {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    .scrollable-text {
+        max-height: 35vh; /* Sedikit lebih kecil lagi */
+    }
+    .image-gallery {
+        /* Jika terlalu sempit untuk 2 kolom, bisa diubah ke 1 kolom lagi di sini */
+        /* grid-template-columns: repeat(1, 1fr); */
+        /* Atau bisa juga tetap 2 kolom dan biarkan gambar sedikit lebih kecil */
+        max-width: 150px; /* Atau sesuaikan lagi jika 250px masih terlalu besar */
+    }
+    }
